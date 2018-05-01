@@ -37,6 +37,7 @@ _sort_dir: asc or desc
 ```
 
 # Next update?
+- Authentication with token
 - CreateHandler
 - UpdateHandler
 - DeleteHandler
