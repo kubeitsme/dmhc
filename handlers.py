@@ -84,6 +84,17 @@ class GetHandler(BaseHandler):
         return json.dumps({'data': resp})
 
 
+class GetByHandler(BaseHandler):
+    def get_record_by_id(self, query):
+        self.db.cursor.execute(query)
+        return self.db.cursor.fetchone()
+    
+    def get_records(self, query):
+        pass
+
+    def GET(self, params):
+        record_id = int(params[''])
+
 
 def max_body(limit):
     def hook(req, resp, resouce, params):
