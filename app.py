@@ -5,6 +5,7 @@ from middleware import require_json
 from resources import provinces
 from resources import districts
 from resources import wards
+from resources import not_found
 
 
 api = falcon.API(middleware=[
@@ -18,3 +19,4 @@ api.add_route('/quan-huyen',    districts.ListResource(db))
 api.add_route('/quan-huyen/ma-so/{district_id}',    districts.GetResource(db))
 api.add_route('/phuong-xa',    wards.ListResource(db))
 api.add_route('/phuong-xa/ma-so/{ward_id}',    wards.GetResource(db))
+api.add_sink(not_found.NotFoundResource().handle_404, '')
