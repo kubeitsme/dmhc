@@ -12,5 +12,7 @@ class StorageEngine(object):
         conn = MySQLdb.connect(host=cfg.DB['host'],
                                user=cfg.DB['user'],
                                passwd=cfg.DB['passwd'],
-                               db=cfg.DB['name'])
+                               db=cfg.DB['name'],
+                               use_unicode=True,
+                               charset="utf8")
         return conn

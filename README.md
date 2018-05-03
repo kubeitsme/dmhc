@@ -75,15 +75,27 @@ sudo nano /etc/nginx/conf.d/virtual.conf
 
 server {
     listen       80;
-    server_name  your_public_dnsname_here;
-
+    server_name  lamgidayta.com www.lamgidayta.com;
     location / {
         proxy_pass http://127.0.0.1:8000;
     }
 }
 
-sudo nginx -t
-
-sudo service nginx restart
+sudo nginx -t && sudo service nginx restart
 
 gunicorn app:api
+
+```
+adding subdomain
+following step
+https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04
+and create dns
+=> google console
+
+```
+
+```
+pkill gunicorn
+
+gunicorn app:api
+```
