@@ -45,15 +45,12 @@ _sort_dir: asc or desc
 
 ```
 sudo apt-get update
-sudo apt-get -y install mysql-server
-sudo apt-get install git-core
+sudo apt-get -y install nginx supervisor git-core default-libmysqlclient-dev mysql-server python3-pip
 sudo mysql -u root -p dhmc < dhmc_2018-05-01.sql  # import DB
 sudo mysql_secure_installation # setting password for mysql-server
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get install default-libmysqlclient-dev
 python3 -V # check python version
-sudo apt-get install -y python3-pip
 python3 -m virtualenv venv # install virtualenv
 source venv/bin/activate
 pip install falcon gunicorn mysqlclient
