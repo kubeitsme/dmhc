@@ -45,7 +45,7 @@ _sort_dir: asc or desc
 
 ```
 sudo apt-get update
-sudo apt-get -y install nginx supervisor git-core default-libmysqlclient-dev mysql-server python3-pip
+sudo apt-get -y install nginx git-core libmysqlclient-dev mysql-server python3-pip
 sudo mysql -u root -p dhmc < dhmc_2018-05-01.sql  # import DB
 sudo mysql_secure_installation # setting password for mysql-server
 sudo apt-get update
@@ -64,3 +64,26 @@ $ sudo mysql -u root -p
 [mysql] flush privileges;
 [mysql] \q 
 ```
+
+```
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
+```
+
+```
+config nginx
+sudo nano /etc/nginx/conf.d/virtual.conf
+
+server {
+    listen       80;
+    server_name  your_public_dnsname_here;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+    }
+}
+
+sudo nginx -t
+
+sudo service nginx restart
+
+gunicorn app:api
